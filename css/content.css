@@ -1,0 +1,100 @@
+.section {
+   /* display: flex;
+   flex-direction: column; */
+}
+.filter {
+
+}
+.items {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 20px;
+   /* grid-template-columns: repeat(auto-fill, minmax(280px, 280px)); */
+}
+.item {
+   /* display: flex; */
+   text-align: center;
+}
+.item__img {
+   text-align: center;
+}
+.info__cat {
+
+}
+.cat__name {
+   font-size: 30px;
+   font-weight: 700;
+}
+.cat__id {
+
+}
+.cat__rate {
+
+}
+              
+.modal__container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: absolute;
+   z-index: 20;
+   background-color: rgba(0, 0, 0, .7);
+  
+   /* opacity: .9; */
+}
+.modal__add {
+  background-color:#fff;
+  border-radius: 15px;
+  padding: 40px;
+
+}
+.modal__add-data {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+   
+   
+}
+.hidden__modal {
+   display: none;
+}
+
+.modal__show {
+   display: flex;
+   gap: 20px;
+   background-color:#fff;
+   border-radius: 15px;
+   padding: 40px;
+}
+.modal__description {
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+}
+.show__info-cat {
+
+}
+.pharam {
+   display: flex;
+   gap: 20px;
+   padding-top: 20px;
+}
+.cat__description {
+   max-width: 300px;
+   padding-top: 20px;
+
+}
+
+.modal__img {
+   background-image: url('/img/cross.png');
+   background-repeat: no-repeat;
+   width: 20px;
+   height: 20px;
+   padding: 3px;
+}

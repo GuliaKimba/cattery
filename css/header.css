@@ -1,0 +1,25 @@
+.header {
+   background-color: rgb(227, 147, 147);
+}
+
+.header__container {
+   
+}
+.header__content {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 30px;
+}
+.header__text {
+   font-size: 40px;
+   font-weight: 700;
+}
+.header__img {
+   width: 100px;
+   
+}
+.header__link {
+
+}
+   

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/css/style.css">
+   <title>CATTERY</title>
+</head>
+
+<body>
+   <header class="header container">
+      <div class="header__container">
+         <div class="header__content">
+            <div class="header__text">Cattery</div>
+            <div class="header__img">
+               <img src="/img/header/cat.png" alt="Cat">
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <section class="section container">
+
+      <div class="filter">
+         <button data-open-modal>Добавить кота</button>
+      </div>
+
+      <div data-action="items-cat" class="items"></div>
+
+   </section>
+
+   <div data-modal_wr class="modal__container hidden__modal">
+      <div class="modal__add">
+         <form name="add_cat">
+            <div class="modal__add-data">
+               <!-- <label for="inputId">ID</label> -->
+               <input type="number" name="id" id="inputId" placeholder="ID">
+               <input type="text" name="name" id="inputName" placeholder="Name">
+               <input type="number" name="age" id="inputAge" placeholder="Age">
+               <input type="text" name="rate" id="inputRate" placeholder="Rate">
+               <input type="text" name="description" id="inputDescription" placeholder="Description">
+               <input type="text" name="img_link" id="inputLink" placeholder="Img Link">
+               <div>
+                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
+                  <label for="inputCheck">Favorite</label>
+               </div>
+
+               <button>Submit</button>
+            </div>
+         </form>
+      </div>
+</div>
+
+   <div data-modal_put class="modal__container hidden__modal">
+      <div class="modal__add">
+         <form name="edit_cat">
+            <div class="modal__add-data">
+               <!-- <label for="inputId">ID</label> -->
+               <!-- <input type="number" name="id" id="inputId" placeholder="ID">
+               <input type="text" name="name" id="inputName" placeholder="Name"> -->
+               <input type="number" name="age" id="inputAge" placeholder="Age">
+               <input type="text" name="rate" id="inputRate" placeholder="Rate">
+               <input type="text" name="description" id="inputDescription" placeholder="Description">
+               <input type="text" name="img_link" id="inputLink" placeholder="Img Link">
+               <div>
+                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
+                  <label for="inputCheck">Favorite</label>
+               </div>
+
+               <button data-action="save">Сохранить</button>
+            </div>
+         </form>
+      </div>
+</div>
+      
+      <script src="/script/content.js"></script>
+</body>
+
+</html>
