@@ -2,9 +2,7 @@
    /* display: flex;
    flex-direction: column; */
 }
-.filter {
 
-}
 .items {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
@@ -12,20 +10,40 @@
    /* grid-template-columns: repeat(auto-fill, minmax(280px, 280px)); */
 }
 .item {
-   /* display: flex; */
+   display: flex;
+   flex-direction: column;
    text-align: center;
+   gap: 10px;
+   padding: 10px;
+   box-shadow: -2px 5px 20px 1px rgba(134, 169, 196, 0.4);
+   border-radius: 15px;
+}
+
+.item :hover {
+   
 }
 .item__img {
    text-align: center;
+  
 }
 .info__cat {
-
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+.info__name-id {
+   display: flex;
+   align-items: flex-end;
+   gap: 10px;
+   
 }
 .cat__name {
    font-size: 30px;
    font-weight: 700;
 }
-.cat__id {
+.cat__id {  
 
 }
 .cat__rate {
@@ -50,6 +68,7 @@
   background-color:#fff;
   border-radius: 15px;
   padding: 40px;
+  position: relative;
 
 }
 .modal__add-data {
@@ -92,9 +111,68 @@
 }
 
 .modal__img {
-   background-image: url('/img/cross.png');
+   background-image: url('/img/cross1.png');
    background-repeat: no-repeat;
    width: 20px;
    height: 20px;
    padding: 3px;
+}
+.modal__img:hover {
+   cursor: pointer;
+}
+
+.modal__img-add {
+   background-image: url('/img/cross1.png');
+   background-repeat: no-repeat;
+   width: 20px;
+   height: 20px;
+   padding: 3px;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+}
+.modal__img-add:hover {
+   cursor: pointer;
+}
+
+.stop {
+   border: 1px solid red;
+}
+
+.footer {
+   background-color: #E5E3E4;
+   
+}
+.about {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   padding: 20px;
+}
+
+.edit__cat {
+   background-color: #eca31a;
+   border: none;
+   padding: 10px;
+   border-radius: 5px;
+   color: #F9F7F2;
+   font-
+   weight: 700;
+}
+
+.edit__cat:hover {
+   cursor: pointer;
+   background-color: #f4c060;
+}
+.delete__cat {
+   background-color: #ef3330;
+   border: none;
+   padding: 10px;
+   border-radius: 5px;
+   color: #fff;
+}
+.delete__cat:hover {
+   cursor: pointer;
+   background-color: #FD5D5B;
 }

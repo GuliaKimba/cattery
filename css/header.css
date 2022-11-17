@@ -1,22 +1,38 @@
 .header {
-   background-color: rgb(227, 147, 147);
+   background-color: #E5E3E4;
+   padding: 30px;
 }
 
 .header__container {
-   
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.btn {
+   padding: 15px;
+   background-color: #222;
+   color: #fff;
+   font-size: 16px;
+   border: none;
+   border-radius: 10px;
+   font-weight: 700;
+}
+.btn:hover {
+   background-color: rgb(74, 73, 73);
+   cursor: pointer;
 }
 .header__content {
    display: flex;
    justify-content: center;
    align-items: center;
-   gap: 30px;
+   gap: 50px;
 }
 .header__text {
    font-size: 40px;
    font-weight: 700;
 }
 .header__img {
-   width: 100px;
+   width: 50px;
    
 }
 .header__link {

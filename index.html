@@ -13,23 +13,27 @@
    <header class="header container">
       <div class="header__container">
          <div class="header__content">
-            <div class="header__text">Cattery</div>
             <div class="header__img">
-               <img src="/img/header/cat.png" alt="Cat">
+               <img src="./img/header/logo4.svg" alt="Cat">
             </div>
+            <div class="header__text">Cattery</div>
+            
+         </div>
+         <div class="btn__container">
+            <button data-open-modal class="btn">Добавить кота</button>
          </div>
       </div>
    </header>
 
    <section class="section container">
-
-      <div class="filter">
-         <button data-open-modal>Добавить кота</button>
-      </div>
-
       <div data-action="items-cat" class="items"></div>
-
    </section>
+   <footer class="container footer">
+      <div class="about">
+         <a href="#">О котах</a>
+         <a href="#">Контакты котов</a>
+      </div>
+   </footer>
 
    <div data-modal_wr class="modal__container hidden__modal">
       <div class="modal__add">
@@ -41,7 +45,7 @@
                <input type="number" name="age" id="inputAge" placeholder="Age">
                <input type="text" name="rate" id="inputRate" placeholder="Rate">
                <input type="text" name="description" id="inputDescription" placeholder="Description">
-               <input type="text" name="img_link" id="inputLink" placeholder="Img Link">
+               <input type="text" name="img_link" id="inputLinkImg" placeholder="Img Link">
                <div>
                   <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
                   <label for="inputCheck">Favorite</label>
@@ -50,32 +54,37 @@
                <button>Submit</button>
             </div>
          </form>
+         <div class='modal__img-add'></div>
       </div>
-</div>
+
+   </div>
 
    <div data-modal_put class="modal__container hidden__modal">
       <div class="modal__add">
-         <form name="edit_cat">
+         <form name="edit_cat" id="form__edit">
             <div class="modal__add-data">
                <!-- <label for="inputId">ID</label> -->
                <!-- <input type="number" name="id" id="inputId" placeholder="ID">
                <input type="text" name="name" id="inputName" placeholder="Name"> -->
-               <input type="number" name="age" id="inputAge" placeholder="Age">
-               <input type="text" name="rate" id="inputRate" placeholder="Rate">
-               <input type="text" name="description" id="inputDescription" placeholder="Description">
-               <input type="text" name="img_link" id="inputLink" placeholder="Img Link">
+               <input type="number" name="age" id="inputAge" placeholder="Age" class="input__edit input__edit-age">
+               <input type="text" name="rate" id="inputRate" placeholder="Rate" class="input__edit input__edit-rate">
+               <input type="text" name="description" id="inputDescription" placeholder="Description"
+                  class="input__edit input__edit-description">
+               <input type="text" name="img_link" id="inputLink" placeholder="Img Link"
+                  class="input__edit input__edit-img_link">
                <div>
-                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
+                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite" class="input__edit-check">
                   <label for="inputCheck">Favorite</label>
                </div>
 
                <button data-action="save">Сохранить</button>
             </div>
          </form>
+         <div class='modal__img-add modal_img-sava-edit'></div>
       </div>
-</div>
-      
-      <script src="/script/content.js"></script>
+   </div>
+
+   <script src="/script/content.js"></script>
 </body>
 
 </html>
