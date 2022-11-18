@@ -41,17 +41,20 @@
             <div class="modal__add-data">
                <!-- <label for="inputId">ID</label> -->
                <input type="number" name="id" id="inputId" placeholder="ID">
+               <div class="modal__alert-id modal__alert hidden__modal">Введите ID</div>
+               <div class="modal__alert-id-val modal__alert hidden__modal">Такой ID уже существует</div>
                <input type="text" name="name" id="inputName" placeholder="Name">
+               <div class="modal__alert-name">Введите имя</div>
                <input type="number" name="age" id="inputAge" placeholder="Age">
-               <input type="text" name="rate" id="inputRate" placeholder="Rate">
-               <input type="text" name="description" id="inputDescription" placeholder="Description">
+               <input type="number" name="rate" id="inputRate" placeholder="Rate">
+               <textarea type="text" name="description" id="inputDescription" placeholder="Description"></textarea>
                <input type="text" name="img_link" id="inputLinkImg" placeholder="Img Link">
                <div>
                   <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
                   <label for="inputCheck">Favorite</label>
                </div>
 
-               <button>Submit</button>
+               <button class="btn">Добавить</button>
             </div>
          </form>
          <div class='modal__img-add'></div>
@@ -67,9 +70,9 @@
                <!-- <input type="number" name="id" id="inputId" placeholder="ID">
                <input type="text" name="name" id="inputName" placeholder="Name"> -->
                <input type="number" name="age" id="inputAge" placeholder="Age" class="input__edit input__edit-age">
-               <input type="text" name="rate" id="inputRate" placeholder="Rate" class="input__edit input__edit-rate">
-               <input type="text" name="description" id="inputDescription" placeholder="Description"
-                  class="input__edit input__edit-description">
+               <input type="number" name="rate" id="inputRate" placeholder="Rate" class="input__edit input__edit-rate">
+               <textarea type="text" name="description" id="inputDescription" placeholder="Description"
+                  class="input__edit input__edit-description"></textarea>
                <input type="text" name="img_link" id="inputLink" placeholder="Img Link"
                   class="input__edit input__edit-img_link">
                <div>
@@ -83,6 +86,8 @@
          <div class='modal__img-add modal_img-sava-edit'></div>
       </div>
    </div>
+
+  
 
    <script src="/script/content.js"></script>
 </body>
