@@ -11,14 +11,16 @@ body {
 
 .header {
    background-color: #E5E3E4;
-   /* padding: 30px; */
 }
 
 .header__container {
    display: flex;
    justify-content: space-around;
    align-items: center;
+   flex-wrap: wrap;
+   gap: 20px;
 }
+
 .btn {
    padding: 15px;
    background-color: #222;
@@ -37,32 +39,23 @@ body {
    justify-content: center;
    align-items: center;
    gap: 50px;
+   flex-wrap: wrap;
 }
 .header__text {
    font-size: 40px;
    font-weight: 700;
 }
-.header__img {
-   width: 50px;
    
-}
-.header__link {
-
-}
-   
-.section {
-   /* display: flex;
-   flex-direction: column; */
-}
-
 .items {
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
    gap: 20px;
-   /* grid-template-columns: repeat(auto-fill, minmax(280px, 280px)); */
 }
+
 .item {
    display: flex;
+   flex: 0 0 25%;
    flex-direction: column;
    text-align: center;
    gap: 10px;
@@ -77,11 +70,6 @@ body {
   height: 300px;
 }
 
-.item img {
-   border-radius: 15px;
-   width: 300px;
-  height: 300px;
-}
 .info__cat {
    display: flex;
    flex-direction: column;
@@ -89,6 +77,7 @@ body {
    align-items: center;
    gap: 5px;
 }
+
 .info__name-id {
    display: flex;
    align-items: center;
@@ -96,72 +85,69 @@ body {
    gap: 10px;
    font-size: 25px;
    font-weight: 700;
-   
 }
               
 .modal__container {
    display: flex;
    justify-content: center;
    align-items: center;
-   /* width: 100%;
-   height: 100%; */
-   /* overflow: hidden; */
-   /* overflow-y: auto; */
+   flex-wrap: wrap;
    top: 0;
    bottom: 0;
    left: 0;
    right: 0;
    position: fixed;
-   /* position: absolute; */
    z-index: 20;
    background-color: rgba(0, 0, 0, .7);
-  
-   /* opacity: .9; */
 }
+
 .modal__add {
   background-color:#fff;
   border-radius: 15px;
   padding: 40px;
   position: relative;
-
 }
+
 .modal__add-data {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    gap: 15px;
-   
-   
 }
+
 .hidden__modal {
    display: none;
 }
 
 .modal__show {
    display: flex;
+   flex-wrap: wrap;
    gap: 20px;
    background-color:#fff;
    border-radius: 15px;
-   padding: 40px;
+   padding: 30px;
 }
 .modal__description {
    display: flex;
    flex-direction: column;
    gap: 30px;
 }
-.show__info-cat {
 
-}
 .pharam {
    display: flex;
    gap: 20px;
    padding-top: 20px;
 }
+
 .cat__description {
    max-width: 300px;
    padding-top: 20px;
-
+}
+textarea {
+   resize: vertical;
+   overflow-y: scroll;
+   width: 170px;
 }
 
 .modal__img {
@@ -170,7 +156,10 @@ body {
    width: 20px;
    height: 20px;
    padding: 3px;
+   top: 0;
+   left: 0;
 }
+
 .modal__img:hover {
    cursor: pointer;
 }
@@ -185,15 +174,15 @@ body {
    top: 10px;
    right: 10px;
 }
+
 .modal__img-add:hover {
    cursor: pointer;
 }
 
-
 .footer {
    background-color: #E5E3E4;
-   
 }
+
 .about {
    display: flex;
    justify-content: center;
@@ -202,37 +191,69 @@ body {
    padding: 20px;
 }
 
+.about a {
+   color: inherit;
+}
+
+.about a:hover {
+   cursor: pointer;
+   color: #ef3330;
+}
+
 .edit__cat {
    background-color: #eca31a;
    border: none;
    padding: 10px;
    border-radius: 5px;
    color: #F9F7F2;
-   font-
-   weight: 700;
+   font-weight: 700;
 }
 
 .edit__cat:hover {
    cursor: pointer;
    background-color: #f4c060;
 }
+
 .delete__cat {
    background-color: #ef3330;
    border: none;
    padding: 10px;
    border-radius: 5px;
    color: #fff;
+   font-weight: 700;
 }
+
 .delete__cat:hover {
    cursor: pointer;
    background-color: #FD5D5B;
 }
 
-.modal__alert {
-   color: red;
-   font-size: 12px;
+.favorite__container {
+   display: flex;
+   justify-content: center;
+   gap: 5px;
+   padding: 5px;
+   align-items: center;
 }
-
-.modal__alert-name {
-   
+.cat__favorite-like {
+   background-image: url('/img/like.png');
+   background-repeat: no-repeat;
+   width: 3px;
+   height: 3px;
+   padding: 20px;
+   align-items: center;
+}
+.cat__favorite-like:hover {
+   cursor: pointer;
+}
+.cat__favorite-unlike {
+   background-image: url('/img/unlike.png');
+   background-repeat: no-repeat;
+   width: 3px;
+   height: 3px;
+   padding: 20px;
+   align-items: center;
+}
+.cat__favorite-unlike:hover {
+   cursor: pointer;
 }

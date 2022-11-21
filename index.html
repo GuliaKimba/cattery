@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/content.css">
+   <link rel="stylesheet" href="style.css">
    <title>CATTERY</title>
 </head>
 
@@ -14,10 +14,10 @@
       <div class="header__container">
          <div class="header__content">
             <div class="header__img">
-               <img src="./img/header/logo4.svg" alt="Cat">
+               <img src="./img/logo.svg" alt="Cat">
             </div>
             <div class="header__text">Cattery</div>
-            
+
          </div>
          <div class="btn__container">
             <button data-open-modal class="btn">Добавить кота</button>
@@ -40,19 +40,15 @@
          <form name="add_cat">
             <div class="modal__add-data">
                <input type="number" name="id" id="inputId" placeholder="ID">
-               <div class="modal__alert-id modal__alert hidden__modal">Введите ID</div>
-               <div class="modal__alert-id-val modal__alert hidden__modal">Такой ID уже существует</div>
                <input type="text" name="name" id="inputName" placeholder="Name">
-               <div class="modal__alert-name">Введите имя</div>
                <input type="number" name="age" id="inputAge" placeholder="Age">
                <input type="number" name="rate" id="inputRate" placeholder="Rate">
                <textarea type="text" name="description" id="inputDescription" placeholder="Description"></textarea>
                <input type="text" name="img_link" id="inputLinkImg" placeholder="Img Link">
                <div>
-                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite">
+                  <input type="checkbox" name="favourite" id="inputCheck" checked>
                   <label for="inputCheck">Favorite</label>
                </div>
-
                <button class="btn">Добавить</button>
             </div>
          </form>
@@ -65,28 +61,26 @@
       <div class="modal__add">
          <form name="edit_cat" id="form__edit">
             <div class="modal__add-data">
-               <input type="text" name="name" id="inputName" placeholder="Name"> 
+               <input type="text" name="name" id="inputName" placeholder="Name" class="input__edit input__edit-name">
                <input type="number" name="age" id="inputAge" placeholder="Age" class="input__edit input__edit-age">
                <input type="number" name="rate" id="inputRate" placeholder="Rate" class="input__edit input__edit-rate">
                <textarea type="text" name="description" id="inputDescription" placeholder="Description"
-                  class="input__edit input__edit-description"></textarea>
+                  class="input__edit input__edit-description" rows="5"></textarea>
                <input type="text" name="img_link" id="inputLink" placeholder="Img Link"
                   class="input__edit input__edit-img_link">
                <div>
-                  <input type="checkbox" name="favourite" id="inputCheck" name="favorite" class="input__edit-check">
-                  <label for="inputCheck">Favorite</label>
+                  <input type="checkbox" name="favourite" id="inputCheck1" name="favorite" class="input__edit-check"
+                     checked>
+                  <label for="inputCheck1">Favorite</label>
                </div>
-
                <button data-action="save">Сохранить</button>
             </div>
          </form>
-         <div class='modal__img-add modal_img-sava-edit'></div>
+         <div class='modal__img-add modal_img-save-edit'></div>
       </div>
    </div>
 
-  
-
-   <script src="content.js"></script>
+   <script src="index.js"></script>
 </body>
 
 </html>

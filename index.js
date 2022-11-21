@@ -79,7 +79,9 @@ class Api {
 }
 
 
-const generateHTMLForCat = (cat) => `
+const generateHTMLForCat = function (cat) {
+   if (cat.favourite == true) {
+      return `
 <div data-id_card='${cat.id}' class='item'>
    <div class="item__img">
       <img src="${cat.img_link}" alt="">
@@ -91,17 +93,44 @@ const generateHTMLForCat = (cat) => `
       </div>
       <div class='cat__age'>Возраст: ${cat.age}</div>
       <div class='cat__rate'>Рейтинг: ${cat.rate}</div>
+      <div data-action='favourite' class='cat__favorite favorite__container cat__favorite-like'></div> 
    </div>
    <div class="edit__container">
       <button data-action='show' class="edit__cat">Подробнее</button>
       <button data-action='delete' class="delete__cat">Удалить</button>
    </div>
-  
    </div>
-   
 `
-const generateModalShowCat = (cat) => `
+   } else {
+      return `
+   <div data-id_card='${cat.id}' class='item'>
+      <div class="item__img">
+         <img src="${cat.img_link}" alt="">
+      </div>
+      <div class='info__cat'>
+         <div class='info__name-id'>
+         <div class='cat__name'>${cat.name}</div>
+         <div class='cat__id'>ID №${cat.id}</div>
+         </div>
+         <div class='cat__age'>Возраст: ${cat.age}</div>
+         <div class='cat__rate'>Рейтинг: ${cat.rate}</div>
+         <div data-action='unfavourite' class='cat__favorite favorite__container'>
+         <div class='cat__favorite-unlike'></div> 
+         </div>
+      </div>
+      <div class="edit__container">
+         <button data-action='show' class="edit__cat">Подробнее</button>
+         <button data-action='delete' class="delete__cat">Удалить</button>
+      </div>
+      </div>
+   `
+   }
+}
 
+
+const generateModalShowCat = function (cat) {
+   if (cat.favourite == true) {
+      return `
 <div data-id_card='${cat.id}' class='modal__container'> 
    <div class='modal__show'>
       <div class="item__img">
@@ -114,8 +143,11 @@ const generateModalShowCat = (cat) => `
             <div class='cat__id'>id ${cat.id}</div>
             </div>
                <div class='pharam'>   
-               <div class='cat__age'>Возраст: ${cat.id}</div>
+               <div class='cat__age'>Возраст: ${cat.age}</div>
                   <div class='cat__rate'>Рейтинг: ${cat.rate}</div>
+                  </div>
+                  <div class='cat__favorite favorite__container'>
+                  <div class='cat__favorite-like'></div> 
                </div>
          <div class='cat__description'>${cat.description}</div>
       </div>
@@ -125,30 +157,65 @@ const generateModalShowCat = (cat) => `
       </div>
       </div>
       <div data-close-modal class='modal__img'></div>
+      </div>
 </div>
 `
+   } else {
+      return `
+      <div data-id_card='${cat.id}' class='modal__container'> 
+         <div class='modal__show'>
+            <div class="item__img">
+               <img src="${cat.img_link}" alt="${cat.name}">
+            </div>
+            <div class='modal__description'>
+               <div class='show__info-cat'>
+               <div class='info__name-id'>
+                  <div class='cat__name'>${cat.name}</div>
+                  <div class='cat__id'>id ${cat.id}</div>
+                  </div>
+                     <div class='pharam'>   
+                     <div class='cat__age'>Возраст: ${cat.age}</div>
+                        <div class='cat__rate'>Рейтинг: ${cat.rate}</div>
+                        </div>
+                        <div class='cat__favorite favorite__container'>
+                        <div class='cat__favorite-unlike'></div> 
+                     </div>
+               <div class='cat__description'>${cat.description}</div>
+            </div>
+            <div class="edit__container">
+               <button data-open-put data-action='edit' class="edit__info-cat edit__cat">Редактировать</button>
+               <button data-action='delete' class="delete__cat">Удалить</button>
+            </div>
+            </div>
+            <div data-close-modal class='modal__img'></div>
+      </div>
+      `
+   }
+}
+
 
 const api = new Api('http://sb-cats.herokuapp.com/api/2/guliakimba');
-api.getAllCats().then((res) => res.data.forEach(cat => items.insertAdjacentHTML('beforeend', generateHTMLForCat(cat))))
+
+api.getAllCats().then((res) => res.data.forEach((cat) => items.insertAdjacentHTML('beforeend', generateHTMLForCat(cat))))
 
 
 items.addEventListener('click', (e) => {
-
    switch (e.target.dataset.action) {
       case 'delete': {
          const cardItem = e.target.closest('[data-id_card]');
          const idCat = cardItem.dataset.id_card
+
          api.deleteCat(idCat).then(() => {
             cardItem.remove()
-            // location.reload();
          })
 
          break
       }
+
       default:
          break
    }
-   
+
 })
 
 
@@ -163,63 +230,62 @@ document.forms.add_cat.addEventListener('submit', (e) => {
    e.preventDefault()
 
    const data = Object.fromEntries(new FormData(e.target).entries())
-   console.log({ data });
 
    data.id = Number(data.id)
    data.rate = Number(data.rate)
    data.age = Number(data.age)
-   data.favorite = data.favorite == 'on'
-
+   data.favourite = data.favourite == 'on'
 
    if (inputLink.value == '') {
       data.img_link = 'https://raw.githubusercontent.com/GuliaKimba/catsimg/main/imgnew/defaultPhotoCat.jpg'
    }
 
-
-   let ok;
+   let validateId;
    api.getAllCats().then((res) => {
 
       res.data.forEach((e) => {
          if (data.id === e.id) {
 
-            console.log(data.id);
-            console.log(e.id);
-            inputId.classList.add('stop')
             alert('Такой ID уже существует. Введите другое число!')
-            ok = false
-            console.log({ ok });
+            validateId = false
+
             return
          }
       })
    })
-   console.log({ ok });
-   let b;
-   if (data.name == '') {
-      console.log({ inputName });
-      alert('Введите имя')
-      b = false
+
+   let validateIdLength;
+   if (data.id == '') {
+
+      alert('Введите ID')
+      validateIdLength = false
       return
    }
-   let c;
-   if (data.id == '') {
-      console.log({ inputName });
-      alert('Введите ID')
-      c = false
+   
+   let validateName;
+   if ((data.name == '') || (!isNaN(data.name))) {
+
+      alert('Введите имя буквами')
+      validateName = false
+      return
+   }
+
+   if (data.rate < 1 || data.rate > 10) {
+      alert('Рейтинг может быть от 1 до 10')
       return
    }
 
    api.addCat(data).then(() => {
-      if ((ok == false) || (b == false) || (c == false)) {
+      if ((validateId == false) || (validateName == false) || (validateIdLength == false)) {
          return
       } else {
-         console.log({ data });
+
          items.insertAdjacentHTML('beforeend', generateHTMLForCat(data))
          modalsWr.classList.add('hidden__modal')
-         console.log({ modalsWr });
+
          e.target.reset()
       }
    }).catch(alert)
-
 
 })
 
@@ -230,7 +296,6 @@ document.querySelector('.modal__container').addEventListener('click', (e) => {
 document.forms.add_cat.addEventListener('input', (e) => {
    const formDataCat = Object.fromEntries(new FormData(document.forms.add_cat).entries());
    const dataSetLS = localStorage.setItem(document.forms.add_cat.name, JSON.stringify(formDataCat))
-
 })
 
 const dataGetLS = localStorage.getItem(document.forms.add_cat.name)
@@ -250,16 +315,15 @@ items.addEventListener('click', (e) => {
          const cardItem = e.target.closest('[data-id_card]');
          const idCat = cardItem.dataset.id_card
 
-         let a;
+         // let a;
          api.showCat(idCat).then((res) => {
-            
+
             items.insertAdjacentHTML('beforeend', generateModalShowCat(res.data))
 
             const closeModalCntShowCat = document.querySelector('.modal__container')
             closeModalCntShowCat.addEventListener('click', (e) => {
                closeModalContainer(e)
             })
-
 
          })
 
@@ -270,76 +334,94 @@ items.addEventListener('click', (e) => {
    }
 
    closeModalWindow(e)
-   
+
    const cardItem = e.target.closest('[data-id_card]');
-   const idCat = cardItem.dataset.id_card
 
-
-   const modalEditInfoCat = document.querySelector('.edit__info-cat')
    if (e.target.dataset.action == 'edit') {
-      const openModalPut = document.querySelector('[data-open-put]')
+
+      
+      const idCat = cardItem.dataset.id_card
+      // const modalEditInfoCat = document.querySelector('.edit__info-cat')
+
+      // const openModalPut = document.querySelector('[data-open-put]')
       const modalPut = document.querySelector('[data-modal_put]')
-      const formEdit = document.querySelector('#form__edit')
-      const inputEdit = document.querySelectorAll('.input__edit')
+      // const formEdit = document.querySelector('#form__edit')
+      // const inputEdit = document.querySelectorAll('.input__edit')
+      const inputEditName = document.querySelector('.input__edit-name')
       const inputEditAge = document.querySelector('.input__edit-age')
       const inputEditRate = document.querySelector('.input__edit-rate')
       const inputEditDescription = document.querySelector('.input__edit-description')
       const inputEditImgLink = document.querySelector('.input__edit-img_link')
-      const inputEditCheck = document.querySelector('.input__edit-check')
+      const inputEditCheck = document.querySelector('#inputCheck1')
+
 
       modalPut.classList.remove('hidden__modal')
 
       generateNewForm(idCat)
 
-      const closeModal = document.querySelector('.modal_img-sava-edit')
+
+      const closeModal = document.querySelector('.modal_img-save-edit')
 
       closeModal.addEventListener('click', (e) => {
-
          closeModalWindowEdit(e)
-
       })
+
 
       document.forms.edit_cat.addEventListener('submit', (e) => {
          e.preventDefault()
 
-
          const data = Object.fromEntries(new FormData(e.target).entries())
+
+         let nameVal = inputEditName.value
          let ageVal = inputEditAge.value;
          let rateVal = inputEditRate.value;
          let descriptionVal = inputEditDescription.value;
          let imgLinkVal = inputEditImgLink.value;
-         let checkVal = inputEditCheck.value;
+         let checkVal = inputEditCheck;
 
 
          data.rate = Number(data.rate)
          data.age = Number(data.age)
-         data.favorite = data.favorite == 'on'
+         data.favourite = data.favourite == 'on'
+
+
+         if (checkVal.checked) {
+            data.favourite == true
+         } else {
+            data.favourite == false
+         }
 
 
          api.showCat(idCat).then((res) => {
-            console.log(res.data.age);
+
+            if (nameVal === '') {
+               data.name = res.data.name
+            }
+
             if (ageVal === '') {
                data.age = res.data.age
             }
-            console.log(data.age);
+
             if (rateVal === '') {
                data.rate = res.data.rate
+            } else if (rateVal < 1 || rateVal > 10) {
+               alert('Рейтинг может быть от 1 до 10')
+               return
             }
+           
             if (descriptionVal === '') {
                data.description = res.data.description
             }
+           
             if (imgLinkVal === '') {
                data.img_link = res.data.img_link
             }
 
-            console.log(data);
-
-
-            api.putCat(data, idCat).then(() => {
-               console.log({ data });
-            }).catch(alert)
+            api.putCat(data, idCat).then().catch(alert)
 
          })
+
+         // closeModalWindowAdd(e)
 
       })
 
@@ -360,12 +442,13 @@ openModalAdd.addEventListener('click', () => {
 
 function closeModalWindow(e) {
    if (e.target.classList.contains('.modal__img') || e.target.closest('.modal__img')) {
-      console.log("закрытие модальки");
+
       e.target.closest('.modal__container').classList.add('hidden__modal')
    }
 }
 function closeModalWindowAdd(e) {
    if (e.target.classList.contains('.modal__img-add') || e.target.closest('.modal__img-add')) {
+
       e.target.closest('.modal__container').classList.add('hidden__modal')
    }
 
@@ -373,6 +456,7 @@ function closeModalWindowAdd(e) {
 }
 function closeModalWindowEdit(e) {
    if (e.target.classList.contains('.modal__img-add') || e.target.closest('.modal__img-add')) {
+      
       e.target.closest('[data-modal_put]').classList.add('hidden__modal')
    }
 
