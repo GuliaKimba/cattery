@@ -243,9 +243,7 @@ textarea {
    padding: 20px;
    align-items: center;
 }
-.cat__favorite-like:hover {
-   cursor: pointer;
-}
+
 .cat__favorite-unlike {
    background-image: url('./img/unlike.png');
    background-repeat: no-repeat;
@@ -253,7 +251,4 @@ textarea {
    height: 3px;
    padding: 20px;
    align-items: center;
-}
-.cat__favorite-unlike:hover {
-   cursor: pointer;
 }

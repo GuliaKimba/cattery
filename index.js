@@ -336,17 +336,12 @@ items.addEventListener('click', (e) => {
    closeModalWindow(e)
 
    const cardItem = e.target.closest('[data-id_card]');
+   
 
    if (e.target.dataset.action == 'edit') {
-
-      
+         
       const idCat = cardItem.dataset.id_card
-      // const modalEditInfoCat = document.querySelector('.edit__info-cat')
-
-      // const openModalPut = document.querySelector('[data-open-put]')
       const modalPut = document.querySelector('[data-modal_put]')
-      // const formEdit = document.querySelector('#form__edit')
-      // const inputEdit = document.querySelectorAll('.input__edit')
       const inputEditName = document.querySelector('.input__edit-name')
       const inputEditAge = document.querySelector('.input__edit-age')
       const inputEditRate = document.querySelector('.input__edit-rate')
@@ -369,7 +364,7 @@ items.addEventListener('click', (e) => {
 
       document.forms.edit_cat.addEventListener('submit', (e) => {
          e.preventDefault()
-
+         
          const data = Object.fromEntries(new FormData(e.target).entries())
 
          let nameVal = inputEditName.value
@@ -391,6 +386,10 @@ items.addEventListener('click', (e) => {
             data.favourite == false
          }
 
+         if ((parseInt(nameVal) >= 0) || (parseInt(nameVal) <= 0)) {
+            alert('Введите имя буквами')
+            return
+         }
 
          api.showCat(idCat).then((res) => {
 
@@ -419,10 +418,15 @@ items.addEventListener('click', (e) => {
 
             api.putCat(data, idCat).then().catch(alert)
 
+            
+         const saveBtn = document.querySelector('.save__btn')
+         if (e.target = saveBtn) {
+            e.target.closest('.modal__container').classList.add('hidden__modal')
+         }
+
          })
 
-         // closeModalWindowAdd(e)
-
+         
       })
 
    }
