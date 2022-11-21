@@ -239,6 +239,9 @@ document.forms.add_cat.addEventListener('submit', (e) => {
    if (inputLink.value == '') {
       data.img_link = 'https://raw.githubusercontent.com/GuliaKimba/catsimg/main/imgnew/defaultPhotoCat.jpg'
    }
+   if (inputDescription.value == '') {
+      data.description = 'Нажмите кнопку \'Редактировать\', чтобы добавить описание кота'
+   }
 
    let validateId;
    api.getAllCats().then((res) => {
