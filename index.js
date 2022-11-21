@@ -194,7 +194,7 @@ const generateModalShowCat = function (cat) {
 }
 
 
-const api = new Api('http://sb-cats.herokuapp.com/api/2/guliakimba');
+const api = new Api('https://sb-cats.herokuapp.com/api/2/guliakimba');
 
 api.getAllCats().then((res) => res.data.forEach((cat) => items.insertAdjacentHTML('beforeend', generateHTMLForCat(cat))))
 
@@ -261,7 +261,7 @@ document.forms.add_cat.addEventListener('submit', (e) => {
       validateIdLength = false
       return
    }
-   
+
    let validateName;
    if ((data.name == '') || (!isNaN(data.name))) {
 
