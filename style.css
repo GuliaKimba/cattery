@@ -151,7 +151,7 @@ textarea {
 }
 
 .modal__img {
-   background-image: url('/img/cross1.png');
+   background-image: url('./img/cross1.png');
    background-repeat: no-repeat;
    width: 20px;
    height: 20px;
@@ -165,7 +165,7 @@ textarea {
 }
 
 .modal__img-add {
-   background-image: url('/img/cross1.png');
+   background-image: url('./img/cross1.png');
    background-repeat: no-repeat;
    width: 20px;
    height: 20px;
@@ -236,7 +236,7 @@ textarea {
    align-items: center;
 }
 .cat__favorite-like {
-   background-image: url('/img/like.png');
+   background-image: url('./img/like.png');
    background-repeat: no-repeat;
    width: 3px;
    height: 3px;
@@ -247,7 +247,7 @@ textarea {
    cursor: pointer;
 }
 .cat__favorite-unlike {
-   background-image: url('/img/unlike.png');
+   background-image: url('./img/unlike.png');
    background-repeat: no-repeat;
    width: 3px;
    height: 3px;
